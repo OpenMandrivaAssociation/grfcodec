@@ -3,7 +3,7 @@
 
 Name:           grfcodec
 Version:        1.0.0
-Release:        %mkrel %{prerel} %{release}
+Release:        %mkrel -c %{prerel} %{release}
 Summary:        A suite of programs to modify Transport Tycoon Deluxe's GRF files
 Group:          Development/Other
 License:        GPLv2+
