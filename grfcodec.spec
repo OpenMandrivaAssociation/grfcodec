@@ -1,14 +1,16 @@
 Name:		grfcodec
-Version:	1.0.0
-Release:	%mkrel 2
+Version:	5.0.0
+Release:	%mkrel 1
 Summary:	A suite of programs to modify Transport Tycoon Deluxe's GRF files
 Group:		Development/Other
 License:	GPLv2+
 URL:		http://www.ttdpatch.net/grfcodec/
 Source:		http://gb.binaries.openttd.org/binaries/extra/%{name}/%{version}/%{name}-%{version}-source.tar.gz
-Patch0:		grfcodec-1.0.0-fix_linking_order.patch
+Patch0:		grfcodec-5.0.0-fix_linking_order.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	boost-devel
+Obsoletes:	nforenum <= 4.0.0-2mdv
+Provides:	nforenum = %{version}-%{release}
 
 %description
 A suite of programs to modify Transport Tycoon Deluxe's GRF files.
@@ -17,9 +19,17 @@ A suite of programs to modify Transport Tycoon Deluxe's GRF files.
 %setup -q -n %{name}-%{version}-source
 %patch0 -p0
 
-#fix build time flags
-sed -i -e 's|-D_FORTIFY_SOURCE=2||' Makefile
-sed -i -e 's|FLAGS += -Wall .*|FLAGS += %{optflags}\nLDOPT = %{ldflags}|' Makefile
+#build time options
+cat << EOF >> Makefile.local
+V=1
+CXXFLAGS=%{optflags}
+LDOPT=%{ldflags}
+STRIP=true
+DO_NOT_INSTALL_LICENSE=1
+DO_NOT_INSTALL_DOCS=1
+DO_NOT_INSTALL_CHANGELOG=1
+prefix=%{_prefix}
+EOF
 
 %build
 %make
@@ -36,3 +46,4 @@ rm -rf %{buildroot}
 %doc bundle/docs/*.txt
 %{_bindir}/*
 %{_mandir}/man1/gr*
+%{_mandir}/man1/nforenum.*
