@@ -1,12 +1,12 @@
 Name:		grfcodec
-Version:	5.0.0
-Release:	%mkrel 2
+Version:	5.1.0
+Release:	%mkrel 1
 Summary:	A suite of programs to modify Transport Tycoon Deluxe's GRF files
 Group:		Development/Other
 License:	GPLv2+
 URL:		http://www.ttdpatch.net/grfcodec/
 Source:		http://gb.binaries.openttd.org/binaries/extra/%{name}/%{version}/%{name}-%{version}-source.tar.gz
-Patch0:		grfcodec-5.0.0-fix_linking_order.patch
+Patch0:		grfcodec-5.1.0-fix_linking_order.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	boost-devel
 Obsoletes:	nforenum < 5.0.0
