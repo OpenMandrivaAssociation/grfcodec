@@ -1,5 +1,5 @@
 %define rev	r818
-%define release	1
+%define release	2
 
 Name:		grfcodec
 Version:	5.1.0
@@ -13,6 +13,7 @@ Source:		http://de.binaries.openttd.org/binaries/extra/%{name}-nightly/%{rev}/%{
 Patch0:		grfcodec-5.1.0-fix_linking_order.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	boost-devel
+BuildRequires:	png-devel
 Obsoletes:	nforenum < 5.0.0
 Provides:	nforenum = %{version}-%{release}
 
