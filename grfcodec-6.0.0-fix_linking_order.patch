@@ -1,0 +1,59 @@
+diff -p -up ./Makefile.orig ./Makefile
+--- ./Makefile.orig	2012-03-05 22:05:33.000000000 +0200
++++ ./Makefile	2012-03-06 17:46:25.459085704 +0200
+@@ -173,30 +173,30 @@ remake:
+ $(GRFCODEC): $(GRFCODECSRC:%.cpp=objs/%.o)
+ 	$(_E) [LD] $@
+ ifdef WITH_PNG
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT) $(shell $(LIBPNG_CONFIG) --ldflags)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^ $(shell $(LIBPNG_CONFIG) --ldflags)
+ else
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ endif
+ 
+ $(GRFDIFF):  $(GRFDIFFSRC:%.cpp=objs/%.o) objs/grfmrg.o
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ $(GRFMERGE): $(GRFMERGESRC:%.cpp=objs/%.o)
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ $(GRFID): $(GRFIDSRC:%.cpp=objs/%.o)
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ $(GRFSTRIP): $(GRFSTRIPSRC:%.cpp=objs/%.o)
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ $(NFORENUM): $(NFORENUMSRC:%.cpp=objs/%.o)
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ 
+ clean:
+@@ -276,7 +276,7 @@ objs/%.o : src/%.cpp Makefile
+ 
+ % : objs/%.o Makefile
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 	$(_C)$(CP_TO_EXE)
+ 
+ # same as above but optimized for size not speed
+@@ -286,7 +286,7 @@ objs/%.os : src/%.cpp Makefile
+ 
+ % :: objs/%.os Makefile
+ 	$(_E) [LD] $@
+-	$(_C)$(CXX) -o $@ $(MY_CXXFLAGS) $^ $(LDOPT)
++	$(_C)$(CXX) $(MY_CXXFLAGS) $(LDOPT) -o $@ $^
+ 
+ # On some installations a version.h exists in /usr/include. This one is then
+ # found by the dependency tracker and thus the dependencies do not contain
