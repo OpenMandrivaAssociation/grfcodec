@@ -1,6 +1,6 @@
 Name:		grfcodec
 Version:	6.0.4
-Release:	1
+Release:	2
 Summary:	A suite of programs to modify Transport Tycoon Deluxe's GRF files
 Group:		Development/Other
 License:	GPLv2+
