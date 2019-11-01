@@ -4,8 +4,8 @@ Release:	1
 Summary:	A suite of programs to modify Transport Tycoon Deluxe's GRF files
 Group:		Development/Other
 License:	GPLv2+
-URL:		http://www.ttdpatch.net/grfcodec/
-Source0:	http://gb.binaries.openttd.org/binaries/extra/%{name}/%{version}/%{name}-%{version}-source.tar.gz
+URL:		https://www.openttd.org/downloads/grfcodec-releases/latest.html
+Source0:	http://binaries.openttd.org/extra/%{name}/%{version}/%{name}-%{version}-source.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	png-devel
 Obsoletes:	nforenum < 5.0.0
