@@ -6,6 +6,7 @@ Group:		Development/Other
 License:	GPLv2+
 URL:		https://www.openttd.org/downloads/grfcodec-releases/latest.html
 Source0:	http://binaries.openttd.org/extra/%{name}/%{version}/%{name}-%{version}-source.tar.xz
+Patch0:   0001-Fix-5-Do-not-use-uint-for-command-id-6.patch
 BuildRequires:	boost-devel
 BuildRequires:	png-devel
 Obsoletes:	nforenum < 5.0.0
@@ -16,11 +17,12 @@ A suite of programs to modify Transport Tycoon Deluxe's GRF files.
 
 %prep
 %setup -q
+%autopatch -p1
 
 #build time options
 %__cat << EOF >> Makefile.local
 V=1
-CXXFLAGS=%{optflags}
+CXXFLAGS=-std=c++14 %{optflags}
 LDOPT=%{ldflags}
 STRIP=true
 DO_NOT_INSTALL_LICENSE=1
