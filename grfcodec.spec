@@ -22,7 +22,7 @@ A suite of programs to modify Transport Tycoon Deluxe's GRF files.
 #build time options
 %__cat << EOF >> Makefile.local
 V=1
-CXXFLAGS=%{optflags}
+CXXFLAGS=-std=c++14 %{optflags}
 LDOPT=%{ldflags}
 STRIP=true
 DO_NOT_INSTALL_LICENSE=1
